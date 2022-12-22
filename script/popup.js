@@ -10,11 +10,7 @@ class Popup {
       this.popup.classList.remove('popup_active');
     }
     setEventListener() {
-      console.log(this.popup);
-      // почему здесь используется стрелочная функция и как это связано с потерей контекста?
       this.popup.addEventListener('click', (evt) => {
-        // console.log(evt.target.classList);
-        console.log(evt.target.closest('.popup__close'));
         if (
           evt.target.classList.contains(this._className) ||
           !!evt.target.closest('.popup__close')
@@ -24,7 +20,8 @@ class Popup {
       });
     }
   }
-  
   const popups = new Popup('popup-add-cats');
-  console.log(popups);
-  // popups.close();
+
+
+
+

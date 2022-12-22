@@ -7,50 +7,36 @@ popupAddCat.setEventListener();
 btnOpenPopupForm.addEventListener('click', () => popupAddCat.open());
 formCatAdd.addEventListener('submit', handleFormAddCat);
 
-cats.forEach(function(catData){
-  const cardInstance = new Card(catData, '#card-template');
-  const newCardElement = cardInstance.getElement();
-  cardsContainer.append(newCardElement);
+cats.forEach(function (catData) {
+    const cardInstance = new Card(catData, '#card-template');
+    const newCardElement = cardInstance.getElement();
+    cardsContainer.append(newCardElement);
 });
 
-function serializeForm(elements){
+function serializeForm(elements) {
     const formData = {};
 
-    elements.forEach( input => {
-        if(input.type === 'submit') return;
+    elements.forEach(input => {
+        if (input.type === 'submit') return;
 
-        if(input.type !== 'checkbox') {
+        if (input.type !== 'checkbox') {
             formData[input.name] = input.value;
-        };
+        }
 
-        if(input.type === 'checkbox') {
+        if (input.type === 'checkbox') {
             formData[input.name] = input.checked;
-        };
-
-    })
-
-   return formData;
+        }
+    });
+    return formData;
 }
 
-function handleFormAddCat(e){
+function handleFormAddCat(e) {
     e.preventDefault();
     const elementsFormCat = [...formCatAdd.elements];
     const dataFromForm = serializeForm(elementsFormCat);
-
-    console.log(dataFromForm);
-    //собрать данные из формы
-    //создать карточку из данных
-    //добавить карточку на страницу
-
     const cardInstance = new Card(dataFromForm, '#card-template');
     const newCardElement = cardInstance.getElement();
     cardsContainer.append(newCardElement);
 
     popupAddCat.close();
 }
-
-
-
-
-
-

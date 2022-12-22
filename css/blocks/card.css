@@ -18,7 +18,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  
   .card__name {
     font-size: 18px;
     font-weight: normal;
@@ -44,7 +43,6 @@
     cursor: pointer;
     z-index: 2;
   }
-  
   .card::before {
     content: '';
     position: absolute;

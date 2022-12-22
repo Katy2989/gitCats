@@ -13,12 +13,6 @@
     --tertiary-color: #CE2724;
 }
 
-/* 
-.footer__info {
-  color: #CE2724
-}
-*/
-
 .footer__info {
   background-color: var(--tertiary-color)
 }

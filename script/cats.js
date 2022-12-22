@@ -89,4 +89,6 @@
         "description": "Мелкий и игривый котик",
         "image": "https://shutniks.com/wp-content/uploads/2019/11/milye_kotyata_i_smeshnye_32_30114121.jpg"
     }
-]
+];
+
+
