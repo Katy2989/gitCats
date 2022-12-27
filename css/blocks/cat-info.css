@@ -1,0 +1,21 @@
+
+.cat-info{
+    display: grid;
+    grid-template-columns: repeat(2, 300px);
+    gap: 0 50px;
+    background-color: #fff;
+    padding: 30px;
+    border: 1px solid;
+    border-radius: 10px;
+    position: relative;
+    max-width: 1000px;
+}
+
+.cat-ifo__image{
+
+    width: 100%;
+  
+    grid-row: 1/5;
+    object-fit: cover;
+
+} 

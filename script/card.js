@@ -1,6 +1,8 @@
-class Card {
-    constructor(data, selectorTemplate ) {
+export class Card {
+    constructor(data, selectorTemplate, handleCatTitle, handleCatImage) {
         this._data = data;
+        this._handleCatTitle = handleCatTitle;
+        this._handleCatImage = handleCatImage;
         this._selectorTemplate = selectorTemplate;
     }  
     _getTempate(){
@@ -8,16 +10,26 @@ class Card {
     }
     getElement() {
         this.element = this._getTempate().cloneNode(true); //клонируем полученное содержимое из шаблона
-        const cardTitle = this.element.querySelector('.card__name');
-        const cardImage = this.element.querySelector('.card__image');
-        const cardLike = this.element.querySelector('.card__like');
+        this.cardTitle = this.element.querySelector('.card__name');
+        this.cardImage = this.element.querySelector('.card__image');
+        this.cardLike = this.element.querySelector('.card__like');
         
         if(!this._data.favorite){
-            cardLike.remove();
+            this.cardLike.remove();
         }
-        cardTitle.textContent = this._data.name;
-        cardImage.src = this._data.image;
 
+        this.cardTitle.textContent = this._data.name; 
+        this.cardImage.src = this._data.image;
+        this.setEventListener();
         return this.element;
     }
+    setEventListener(){
+
+        this.cardTitle.addEventListener('click', this._handleCatTitle);
+        this.cardImage.addEventListener('click', ()=> this._handleCatImage(this._data));
+    }
+
+ 
+
+
 }

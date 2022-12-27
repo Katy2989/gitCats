@@ -1,11 +1,21 @@
-class Popup {
+export class Popup {
     constructor(className) {
       this._className = className;
       this.popup = document.querySelector(`.${className}`);
     }
-    open() {
-      this.popup.classList.add('popup_active');
+
+    setContent(contentNode){
+      const contentContainer = this.popup.querySelector(".popup__content");
+      contentContainer.innerHTML="text";
+      contentContainer.append(contentNode);
+
     }
+    open() {
+   
+      this.popup.classList.add('popup_active'); 
+    
+    }
+
     close() {
       this.popup.classList.remove('popup_active');
     }
@@ -21,6 +31,8 @@ class Popup {
     }
   }
   const popups = new Popup('popup-add-cats');
+
+
 
 
 

@@ -21,6 +21,8 @@
   .card__name {
     font-size: 18px;
     font-weight: normal;
+   
+    
   }
   .card__name:hover:after {
     font: var(--fa-font-solid);
@@ -54,4 +56,18 @@
     backdrop-filter: blur(2px);
     transition: 0.5s linear;
     transition-property: backdrop-filter, background-color;
+    pointer-events: none;
+  }
+
+  .card:hover .card__name {
+   
+    background-color: #fff8;
+    padding: 10px 40px 10px 40px;
+    font-weight: bold;
+
+  }
+  .card:hover::before {
+    backdrop-filter:blur(0);
+    background-color:transparent;
+
   }
