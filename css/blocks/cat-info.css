@@ -1,21 +1,134 @@
 
 .cat-info{
     display: grid;
-    grid-template-columns: repeat(2, 300px);
-    gap: 0 50px;
+    grid-template-columns: repeat(2, 250px);
+    gap: 0 30px;
     background-color: #fff;
-    padding: 30px;
+    padding: 15px;
     border: 1px solid;
     border-radius: 10px;
     position: relative;
     max-width: 1000px;
 }
 
-.cat-ifo__image{
+.cat-info__description{
+
+    grid-column: span 2;
+}
+
+.cat-info__saved__hidden{
+display: none;
+}
+
+.cat-info__edited__hidden{
+    display: none;
+    }
+
+.cat-info__rate{
+white-space: nowrap;
+
+}
+.cat-info__image{
 
     width: 100%;
-  
     grid-row: 1/5;
     object-fit: cover;
 
 } 
+
+
+.cat-info__age-val{
+
+    padding-right:5px;
+
+}
+
+.cat-info__like{
+    border:none;
+    border-color: transparent;
+    color: var(--text-secondary-color);
+    
+    }
+
+.cat-info__like__active{
+color: var(--tertiary-color);
+
+}
+
+
+
+    .cat-info__rate{
+    margin-top:15px;
+    }
+
+    .cat-info [contentEditable = "true"]{
+        box-shadow:  0 0 1px 1px var(--accent-color);
+        outline: none;
+    }
+
+    .cat-info [contentEditable = "true"]:focus{
+        box-shadow:  0 0 1px 1px var(--tertiary-color);
+        outline: none;
+    }
+    .cat-info__edited{
+        position: absolute;
+        top: 5px;
+        right: 80px;
+        cursor: pointer;
+        background-position: center 0;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        visibility: visible;
+        opacity: 1;
+
+    }
+
+    .cat-info__saved{
+        position: absolute;
+        top: 5px;
+        right: 80px;
+        cursor: pointer;
+        background-position: center 0;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        visibility: visible;
+        opacity: 1;
+
+    }
+
+    .cat-info__deleted{
+        position: absolute;
+        top: 5px;
+        right: 45px;
+        cursor: pointer;
+        background-position: center 0;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        visibility: visible;
+        opacity: 1;
+
+    }
+
+.cat-info__closed{
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        cursor: pointer;
+        background-position: center 0;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        visibility: visible;
+        opacity: 1;
+
+    }
+
+ 
+    

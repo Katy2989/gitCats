@@ -70,8 +70,10 @@
   </div>
   <div class="popup popup-cat-info popup__active">
     <div class="popup__container">
-      <button class="popup__close btn"><i class="fa-solid fa-xmark"></i></button>
- <div class="popup__content"></div>
+      <button class="popup__close btn popup__close_external"><i class="fa-solid fa-xmark"></i></button>
+ <div class="popup__content">
+  
+ </div>
 </div>
 </div>
 
@@ -136,23 +138,23 @@
   </template>
   <template id="cats-info-template">
     <div class="cat-info">
-      <button class="cat-info__saved" aria-label="Сохранить"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
-      <button class="cat-info__edited cat-info__saved-hidden" aria-label="Изменить"><i
-          class="fa-sharp fa-solid fa-pen-to-square"></i></button>
+      <button class="cat-info__saved cat-info__saved__hidden" aria-label="Сохранить"><i class="fa-solid fa-floppy-disk"></i></button>
+      <button id="info__edited" class="cat-info__edited"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
       <button class="cat-info__deleted" aria-label="Удалить"><i class="fa-solid fa-trash"></i></button>
+      <button id="info__closed" class="cat-info__closed" aria-label="Закрыть"><i class="fa-solid fa-circle-xmark"></i></button>
 
       <img src="#" class="cat-info__image">
       <span class="cat-info__id"></span>
       <div class="cat-info__title">
         <h2 class="cat-info__name"></h2>
-        <button class="cat-info__like"><i class="fa-solid fa-heart fa-2x"></i></button>
+        <button class="cat-info__like cat-info__like__active"><i class="fa-solid fa-heart fa-2x"></i></button>
       </div>
-      <span class="cat-info__rate"></span>
+      <span class="cat-info__rate">Рейтинг:</span>
       <div class="cat-info__age">
         <span class="cat-info__age-val"></span>
         <span class="cat-info__age-text"></span>
       </div>
-      <p class="cat-info__description"></p>
+      <p id="info__description" class="cat-info__description"></p>
     </div>
   </template>
   <!-- <script src="./script/cats.js" defer></script>

@@ -21,7 +21,7 @@
 }
 
 .popup__container {
-  max-width: 100%;
+  max-width: 40%;
   background-color: var(--form-color);
   padding: 20px;
   position: relative;
@@ -34,14 +34,17 @@
 }
 
 .popup__close_external {
-  background-color: transparent;
-  color: var(--bg-main-color);
+  /* background-color: transparent;
+  color: var(--bg-overlay-color);
   top: -40px;
   right: -40px;
-  font-size: 30px;
+  font-size: 30px; */
+  display: none;
+
 }
 
 .popup__image {
   max-width: 100%;
   max-height: 100%;
 }
+

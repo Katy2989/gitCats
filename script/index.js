@@ -27,6 +27,9 @@ popupImage.setEventListener();
 
 const catInfoTemplate = new CatInfo(
 "#cats-info-template",
+handleCatInfoEdit,
+handleCatLike,
+handleCatDelete,
 
 );
 
@@ -57,18 +60,42 @@ function createCat(dataCat) {
   }
 
 function handleFormAddCat(e) {
+
+
   e.preventDefault();
   const elementsFormCat = [...formCatAdd.elements];
 
   const dataFromForm = serializeForm(elementsFormCat);
-
+ 
   api.addNewCat(dataFromForm).then(() => {
+ 
     createCat(dataFromForm);
     updateLocalStorage(dataFromForm, { type: 'ADD_CAT' });
+    
   });
 
   popupAddCat.close();
 }
+
+function handleCatDelete(catInstance){
+ api.deleteCatById(catInstance.getId())
+  .then(()=>{
+  catInstance.deleteCard();
+  updateLocalStorage(catInstance.getData(), {type: "DELETE_CAT"});
+  popupCatInfo.close();
+ });
+}
+
+function handleCatInfoEdit(catInstance, data){
+  const {age, description, name, id} = data;
+  api.updateCatById(id, {age, description, name})
+   .then(()=>{
+    catInstance.setData(data);
+    catInstance.updateCard();
+    updateLocalStorage(data, {type: "EDIT_CAT"});
+   popupCatInfo.close();
+  });
+ }
 
 function handleFormLogin(e) {
     e.preventDefault();
@@ -86,16 +113,37 @@ if (!isAuth) {
   btnOpenPopupLogin.classList.remove('visually-hidden');
 }
 
-function handleCatTitle() {
+function handleCatLike(data, catInstance){
+  const {id, favorite} = data;
+  api.updateCatById(id, {favorite})
+   .then(()=>{
+    if (catInstance){
+    catInstance.setData(data);
+    catInstance.updateCard();
+  }
+    updateLocalStorage(data, {type: "EDIT_CAT"});
+  //  popupCatInfo.close();
+  });
 
+}
+
+function handleCatTitle(catInstance) {
+
+  catInfoTemplate.setData(catInstance);
   popupCatInfo.setContent(catInfoElement);
   popupCatInfo.open();
+   
 }
 
+
+
 function handleCatImage(dataCard) {
-  // console.log(dataCard);
+
   popupImage.open(dataCard);
+
+
 }
+
 
 function checkLocalStorage() {
 
@@ -147,9 +195,21 @@ function checkLocalStorage() {
   }
   
   btnOpenPopupForm.addEventListener('click', () => {
-     popupAddCat.open();
+
+  const isAuth = Cookies.get('email');
+
+  if (!isAuth) {
+  popupAddCat.close();
+  popupLogin.open();
+  btnOpenPopupLogin.classList.remove('visually-hidden');
+}
+else{
+    popupAddCat.open();}
   });
+
+
   btnOpenPopupLogin.addEventListener('click', () => popupLogin.open());
+  
   
   formCatAdd.addEventListener('submit', handleFormAddCat);
   formLogin.addEventListener('submit', handleFormLogin);
